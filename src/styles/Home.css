@@ -166,6 +166,19 @@ footer {
     visibility: hidden;
 }
 
+@media only screen and (max-width: 750px) {
+    .hero img {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 80%;
+        margin: auto;
+        height: auto;
+        display: none;
+        visibility: hidden;
+    }
+}
+
 @media only screen and (max-width: 575px) {
     .hide-desktop {
         display: block;
@@ -181,16 +194,7 @@ footer {
         margin: 0;
     }
 
-    .hero img {
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 80%;
-        margin: auto;
-        height: auto;
-        display: none;
-        visibility: hidden;
-    }
+    
 
     .hero-left {
         position: relative;

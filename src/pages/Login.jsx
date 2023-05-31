@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom"
 
 import "../styles/Auth.css";
 
@@ -8,7 +9,7 @@ export default function Login() {
             {/* start of content */}
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-md-6 px-0">
+                    <div className="col-md-6 px-0 left-side">
                         <div className="logo-container">
                             <img
                                 src="/images/auth-logo.png"
@@ -25,64 +26,73 @@ export default function Login() {
                         </div>
                         <div className="overlay-box" />
                     </div>
-                    <div className="col-md-4 col-xs-10">
-                        <div className="container auth-form">
-                            <h1 className="text-center text-warning">Welcome</h1>
-                            <p className="text-center text-muted">
-                                Log in into your exiting account
-                            </p>
-                            <hr />
-                            <form action="/">
-                                <div className="mb-3">
-                                    <label htmlFor="exampleInputEmail1" className="form-label">
-                                        E-mail
-                                    </label>
-                                    <input
-                                        type="email"
-                                        className="form-control form-control-lg"
-                                        id="exampleInputEmail1"
-                                        aria-describedby="emailHelp"
-                                        placeholder="Email address"
-                                    />
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="exampleInputPassword1" className="form-label">
-                                        Password
-                                    </label>
-                                    <input
-                                        type="password"
-                                        className="form-control form-control-lg"
-                                        id="exampleInputPassword1"
-                                        placeholder="Password"
-                                    />
-                                </div>
-                                <div className="mb-3 form-check">
-                                    <input
-                                        type="checkbox"
-                                        className="form-check-input"
-                                        id="exampleCheck1"
-                                    />
-                                    <label className="form-check-label" htmlFor="exampleCheck1">
-                                        I agree to terms &amp; conditions
-                                    </label>
-                                </div>
-                                <div className="d-grid">
-                                    <button type="submit" className="btn width-100 btn-lg">
-                                        Log in
-                                    </button>
-                                </div>
-                            </form>
-                            <hr />
-                            <small className="d-block text-center text-muted">
-                                Don’t have an account?
-                                <a
-                                    className="text-warning text-decoration-none"
-                                    href="/register"
-                                >
-                                    Sign Up
-                                </a>
-                            </small>
+                    <div className="col p-4 d-flex flex-column justify-content-center m-0">
+                        <h1 className="text-center">Welcome</h1>
+                        <p className="text-center text-secondary">
+                            Log in into your exiting account
+                        </p>
+                        <div className="row m-0 p-0 justify-content-start justify-content-md-center">
+                            <div className="col col-md-8">
+                                <hr />
+                                <form action="/" method="get">
+                                    <div className="mb-3">
+                                        <label for="email" className="form-label">
+                                            E-mail
+                                        </label>
+                                        <input
+                                            type="email"
+                                            className="form-control"
+                                            id="email"
+                                            name="email"
+                                            placeholder="E-mail"
+                                        />
+                                    </div>
+                                    <div className="mb-3">
+                                        <label for="password" className="form-label">
+                                            Password
+                                        </label>
+                                        <input
+                                            type="password"
+                                            className="form-control"
+                                            id="password"
+                                            name="password"
+                                            placeholder="Password"
+                                        />
+                                    </div>
+                                    <div className="mb-3 form-check">
+                                        <input
+                                            type="checkbox"
+                                            className="form-check-input"
+                                            id="termsConditions"
+                                            name="termsConditions"
+                                        />
+                                        <label className="form-check-label" for="termsConditions">
+                                            I agree to terms & conditions
+                                        </label>
+                                    </div>
+                                    <div className="d-grid">
+                                        <button
+                                            type="submit"
+                                            className="btn"
+                                            style={{ backgroundColor: "#efc81a", color: "white" }}
+                                        >
+                                            Log in
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
+                        <p className="text-center mt-5">
+                            Don't have an account?
+                            <Link
+                                to="/register"
+                                className="text-decoration-none"
+                                style={{ color: "#efc81a" }}
+                            >
+                                {" "}
+                                Sign up
+                            </Link>
+                        </p>
                     </div>
                 </div>
             </div>

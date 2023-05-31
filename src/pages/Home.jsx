@@ -5,6 +5,9 @@ import "../styles/Home.css";
 // import component
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import RecipeCard from "../components/RecipeCard";
+
+import recipeList from "../menu.json";
 
 export default function Home() {
     return (
@@ -94,90 +97,9 @@ export default function Home() {
                         <h3>Popular Recipes</h3>
                     </div>
                     <div className="row">
-                        <div className="col-md-4 col-xs-12 mb-4">
-                            <a href="/detail" className="text-decoration-none">
-                                <div
-                                    className="popular-recipe-image"
-                                    style={{
-                                        backgroundImage: 'url("/images/chicken-kare.png")'
-                                    }}
-                                >
-                                    <h4 style={{ textShadow: "0px 0px 2px rgba(0, 0, 0, 0.4)" }}>
-                                        Chiken Kare
-                                    </h4>
-                                </div>
-                            </a>
-                        </div>
-                        <div className="col-md-4 col-xs-12 mb-4">
-                            <a href="detail_recipe.html" className="text-decoration-none">
-                                <div
-                                    className="popular-recipe-image"
-                                    style={{
-                                        backgroundImage: 'url("/images/bomb-chicken.png")'
-                                    }}
-                                >
-                                    <h4 style={{ textShadow: "0px 0px 2px rgba(0, 0, 0, 0.4)" }}>
-                                        Bomb Chicken
-                                    </h4>
-                                </div>
-                            </a>
-                        </div>
-                        <div className="col-md-4 col-xs-12 mb-4">
-                            <a href="detail_recipe.html" className="text-decoration-none">
-                                <div
-                                    className="popular-recipe-image"
-                                    style={{
-                                        backgroundImage: 'url("/images/banana-smothie-pop.png")'
-                                    }}
-                                >
-                                    <h4 style={{ textShadow: "0px 0px 2px rgba(0, 0, 0, 0.4)" }}>
-                                        Banana Smothie Pop
-                                    </h4>
-                                </div>
-                            </a>
-                        </div>
-                        <div className="col-md-4 col-xs-12 mb-4">
-                            <a href="detail_recipe.html" className="text-decoration-none">
-                                <div
-                                    className="popular-recipe-image"
-                                    style={{
-                                        backgroundImage: 'url("/images/coffe-lava-cake.png")'
-                                    }}
-                                >
-                                    <h4 style={{ textShadow: "0px 0px 2px rgba(0, 0, 0, 0.4)" }}>
-                                        Coffe Lava Cake
-                                    </h4>
-                                </div>
-                            </a>
-                        </div>
-                        <div className="col-md-4 col-xs-12 mb-4">
-                            <a href="detail_recipe.html" className="text-decoration-none">
-                                <div
-                                    className="popular-recipe-image"
-                                    style={{
-                                        backgroundImage: 'url("/images/sugar-salmon.png")'
-                                    }}
-                                >
-                                    <h4 style={{ textShadow: "0px 0px 2px rgba(0, 0, 0, 0.4)" }}>
-                                        Sugar Salmon
-                                    </h4>
-                                </div>
-                            </a>
-                        </div>
-                        <div className="col-md-4 col-xs-12 mb-4">
-                            <a href="detail_recipe.html" className="text-decoration-none">
-                                <div
-                                    className="popular-recipe-image"
-                                    style={{
-                                        backgroundImage: 'url("/images/indian-salad.png")'
-                                    }}
-                                >
-                                    <h4 style={{ textShadow: "0px 0px 2px rgba(0, 0, 0, 0.4)" }}>
-                                        Indian Salad
-                                    </h4>
-                                </div>
-                            </a>
-                        </div>
+                        {recipeList.menu.map((item) => (
+                            <RecipeCard title={item?.title} image={item?.image} />
+                        ))}
                     </div>
                 </div>
             </section>

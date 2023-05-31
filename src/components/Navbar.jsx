@@ -27,7 +27,7 @@ export default function Navbar() {
                                 style={{ color: "#fff" }}
                             >
                                 <img
-                                    src="/assets/images/ic-user.png"
+                                    src="/images/ic-user.png"
                                     alt="icon user"
                                     style={{ width: "5vh" }}
                                 />
@@ -46,7 +46,7 @@ export default function Navbar() {
                     aria-expanded="false"
                     aria-controls="collapseExample"
                 >
-                    <img src="/assets/images/menu.png" width="35px" height="35px" />
+                    <img src="/images/menu.png" width="35px" height="35px" />
                 </button>
             </div>
             <div className="collapse" id="collapseExample">
