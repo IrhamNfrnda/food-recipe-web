@@ -7,7 +7,7 @@ export default function RecipeCard(props) {
   return (
     <>
       <div className="col-md-4 col-xs-12 mb-4">
-        <Link className="text-decoration-none" to={`/detail`}>
+        <Link className="text-decoration-none" to={`/detail/${title?.toLowerCase()?.split(" ")?.join("-")}`}>
           <div
             className="popular-recipe-image"
             style={{

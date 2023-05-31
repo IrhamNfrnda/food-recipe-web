@@ -1,21 +1,37 @@
 import React from 'react'
 
 import '../styles/Detail.css'
+import { useLocation } from "react-router";
 
 // import components
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 
+import recipeList from "../menu.json";
+
+
 export default function Detail() {
+    const detail = recipeList.menu;
+    const location = useLocation();
+    const [currentRecipe, setCurrentRecipe] = React.useState(null);
+
+    React.useEffect(() => {
+        const currentSlug = location?.pathname?.split("/")[2];
+
+        window.scrollTo(0, 0);
+
+        setCurrentRecipe(detail.find((res) => res.slug === currentSlug));
+    }, []);
+
     return (
         <>
             <Navbar />
             {/* start of content */}
             <section id="content">
                 <div className="container">
-                    <h1 className="text-center text-primary">Loream Sandwich</h1>
+                    <h1 className="text-center text-primary">{currentRecipe?.title}</h1>
                     <div className="d-flex justify-content-center">
-                        <img src="/images/detail-photo.png" className="main-image" />
+                        <img src={`/images/${currentRecipe?.image}`} className="main-image" />
                     </div>
                     <div className="row mt-5">
                         <div className="col offset-md-2">

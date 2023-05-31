@@ -1,14 +1,14 @@
 {
     "menu": [
       {
-        "title": "Chiken Kare",
+        "title": "Chicken Kare",
         "image": "chicken-kare.png",
         "slug": "chicken-kare"
       },
       {
         "title": "Bomb Chicken",
         "image": "bomb-chicken.png",
-        "slug": "nasi-ayam-rica"
+        "slug": "bomb-chicken"
       },
       {
         "title": "Banana Smothie Pop",
