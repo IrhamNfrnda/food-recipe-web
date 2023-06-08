@@ -1,38 +1,51 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 
 export default function Navbar() {
     return (
         <>
-            <div className="container mt-5">
+            <div className="container mt-5" >
                 <div className="row nav">
                     <div className="col">
                         <div>
-                            <a className="nav-item active" href="/">
+                            <Link className="nav-item active" to="/">
                                 Home
-                            </a>
-                            <a className="nav-item" href="/add-recipe">
+                            </Link>
+                            <Link className="nav-item" to="/add-recipe">
                                 Add Recipe
-                            </a>
-                            <a className="nav-item" href="/profile">
+                            </Link>
+                            <Link className="nav-item" to="/profile">
                                 Profile
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className="col-md-auto" />
                     <div className="col-md-1">
                         <div>
-                            <a
-                                href="/login"
-                                className="text-decoration-none nav-item d-flex justify-content-end align-items-center gap-2 d-lg-flex d-none"
-                                style={{ color: "#fff" }}
-                            >
-                                <img
-                                    src="/images/ic-user.png"
-                                    alt="icon user"
-                                    style={{ width: "5vh" }}
-                                />
-                                Login
-                            </a>
+                            {localStorage.getItem("auth") ? (
+                                <>
+                                    <Link
+                                        className="text-decoration-none nav-item d-flex justify-content-end align-items-center gap-2 d-lg-flex d-none"
+                                        onClick={() => {
+                                            localStorage.clear();
+
+                                            window.location.href = "/login";
+                                        }}
+                                    >
+                                        Logout
+                                    </Link>
+                                </>
+                            ) : (
+                                <>
+                                    <Link
+                                        className="text-decoration-none nav-item d-flex justify-content-end align-items-center gap-2 d-lg-flex d-none"
+                                        to="/login"
+                                    >
+                                        Login
+                                    </Link>
+                                </>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -46,32 +59,32 @@ export default function Navbar() {
                     aria-expanded="false"
                     aria-controls="collapseExample"
                 >
-                    <img src="/images/menu.png" width="35px" height="35px" />
+                    <img src="/images/menu.png" alt='Nav Menu' width="35px" height="35px" />
                 </button>
             </div>
             <div className="collapse" id="collapseExample">
                 <div className="card card-body">
-                    <a className="nav-item fw-bold mb-3 mt-3 text-center" href="/">
+                    <Link className="nav-item fw-bold mb-3 mt-3 text-center" to="/">
                         Home
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                         className="nav-item fw-bold text-decoration-none mb-3 text-center"
-                        href="/add-recipe"
+                        to="/add-recipe"
                     >
                         Add Recipe
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                         className="nav-item fw-bold text-decoration-none mb-3 text-center"
-                        href="/profile"
+                        to="/profile"
                     >
                         Profile
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                         className="nav-item fw-bold text-decoration-none mb-3 text-center"
-                        href="/login"
+                        to="/login"
                     >
                         Login
-                    </a>
+                    </Link>
                 </div>
             </div>
         </>

@@ -27,12 +27,6 @@
     z-index: 2;
 }
 
-.auth-form {
-    position: absolute;
-    left: 25%;
-    top: 15%;
-}
-
 .auth-form h1 {
     font-family: 'Inter';
     font-style: normal;
@@ -104,7 +98,7 @@ form button {
     width: 100%;
 }
 
-.form-check label {
+.form-check-label {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;

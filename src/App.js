@@ -10,6 +10,10 @@ import AddRecipe from "./pages/AddRecipe";
 import Profile from "./pages/Profile";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import axios from "axios";
+
+import { store } from "./store";
+import { Provider } from "react-redux";
 
 const router = createBrowserRouter([
   {
@@ -39,9 +43,23 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  axios.interceptors.request.use((config) => {
+    if (localStorage.getItem("token")) {
+      config.headers["Authorization"] = `Bearer ${localStorage.getItem(
+        "token"
+      )}`;
+    }
+
+    return config;
+  }, (error) => {
+    Promise.reject(error);
+  });
+
   return (
     <div className="App">
-      <RouterProvider router={router} />
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
     </div>
   );
 }

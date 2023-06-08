@@ -1,9 +1,88 @@
 import React from 'react'
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import axios from "axios";
+import Swal from "sweetalert2";
+
 
 import "../styles/Auth.css";
 
 export default function Register() {
+    const navigate = useNavigate();
+
+    const [name, setName] = React.useState("");
+    const [email, setEmail] = React.useState("");
+    const [phoneNumber, setPhoneNumber] = React.useState("");
+    const [createNewPassword, setCreateNewPassword] = React.useState("");
+    const [newPassword, setNewPassword] = React.useState("");
+
+    React.useEffect(() => {
+        if (localStorage.getItem("auth") === "true") {
+            navigate("/profile");
+        }
+    }, []);
+
+    //Check if checkbox term & condition is checked
+    const checkTermCondition = () => {
+        if (document.getElementById("terms-conditions").checked === false) {
+            Swal.fire({
+                title: "Term & Condition",
+                text: "Please check term & condition first",
+                icon: "error",
+            });
+        } else {
+            checkPassword();
+        }
+    };
+
+    //Check if password and confirm password is match
+    const checkPassword = () => {
+        if (createNewPassword !== newPassword) {
+            Swal.fire({
+                title: "Password not match",
+                text: "Password and confirm password is not match",
+                icon: "error",
+            });
+        } else {
+            handleRegister();
+        }
+    };
+
+    const handleRegister = () => {
+
+        // show loading before axios finish
+        Swal.fire({
+            title: "Please wait...",
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
+            },
+        });
+
+        axios
+            .post(`${process.env.REACT_APP_BASE_URL}/auth/register`, {
+                fullname: name,
+                email: email,
+                phoneNumber: phoneNumber,
+                password: newPassword,
+            })
+            .then((result) => {
+                Swal.fire({
+                    title: "Register Success",
+                    text: "Register success, please login...",
+                    icon: "success",
+                }).then(() => {
+                    navigate("/login");
+                });
+            })
+            .catch((error) => {
+                Swal.fire({
+                    title: "Register Failed",
+                    text: error?.response?.data?.message ?? "Something wrong in our app",
+                    icon: "error",
+                });
+            });
+    };
+
     return (
         <>
             {/* start of content */}
@@ -34,7 +113,9 @@ export default function Register() {
                         <div className="row m-0 p-0 justify-content-start justify-content-md-center">
                             <div className="col col-md-8">
                                 <hr />
-                                <form action="/" method="get">
+                                <form onSubmit={(event) => {
+                                    event.preventDefault();
+                                }}>
                                     <div className="mb-3">
                                         <label for="name" className="form-label">
                                             Name
@@ -45,6 +126,7 @@ export default function Register() {
                                             id="name"
                                             name="name"
                                             placeholder="Name"
+                                            onChange={(e) => setName(e.target.value)}
                                         />
                                     </div>
                                     <div className="mb-3">
@@ -57,6 +139,7 @@ export default function Register() {
                                             id="email"
                                             name="email"
                                             placeholder="Enter email address"
+                                            onChange={(e) => setEmail(e.target.value)}
                                         />
                                     </div>
                                     <div className="mb-3">
@@ -69,6 +152,7 @@ export default function Register() {
                                             id="phoneNumber"
                                             name="phoneNumber"
                                             placeholder="08xxxxxxxxxx"
+                                            onChange={(e) => setPhoneNumber(e.target.value)}
                                         />
                                     </div>
                                     <div className="mb-3">
@@ -81,6 +165,7 @@ export default function Register() {
                                             id="createNewPassword"
                                             name="createNewPassword"
                                             placeholder="Create New Password"
+                                            onChange={(e) => setCreateNewPassword(e.target.value)}
                                         />
                                     </div>
                                     <div className="mb-3">
@@ -93,6 +178,7 @@ export default function Register() {
                                             id="newPassword"
                                             name="newPassword"
                                             placeholder="New Password"
+                                            onChange={(e) => setNewPassword(e.target.value)}
                                         />
                                     </div>
                                     <div className="mb-3 form-check">
@@ -111,6 +197,7 @@ export default function Register() {
                                             type="submit"
                                             className="btn"
                                             style={{ backgroundColor: "#efc81a", color: "white" }}
+                                            onClick={checkTermCondition}
                                         >
                                             Register Account
                                         </button>

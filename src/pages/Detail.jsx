@@ -7,11 +7,12 @@ import { useLocation } from "react-router";
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 
+import axios from 'axios';
+
 import recipeList from "../menu.json";
 
 
 export default function Detail() {
-    const detail = recipeList.menu;
     const location = useLocation();
     const [currentRecipe, setCurrentRecipe] = React.useState(null);
 
@@ -20,8 +21,52 @@ export default function Detail() {
 
         window.scrollTo(0, 0);
 
-        setCurrentRecipe(detail.find((res) => res.slug === currentSlug));
+        // set current recipe using axios
+        axios.get(`${process.env.REACT_APP_BASE_URL}/recipe/detail/${currentSlug}`).then((result) => {
+            setCurrentRecipe(result.data?.data[0]);
+        });
     }, []);
+
+    const RecipeIngredients = () => {
+        const ingredientsResponse = currentRecipe?.ingredients;
+        const lines = ingredientsResponse ? ingredientsResponse.split("-").slice(1) : [];
+
+        return (
+            <div>
+                <ul>
+                    {lines.map((line, index) => (
+                        <li key={index}>{line}</li>
+                    ))}
+                </ul>
+            </div>
+        );
+
+    };
+
+    const VideoEmbed = () => {
+        const videoResponse = currentRecipe?.video_link;
+
+        const videoId = videoResponse ? videoResponse.split("v=")[1] : "";
+
+        return (
+            <div className="row mt-5">
+                <div className="col offset-md-2">
+                    <h2>Video Step</h2>
+                    <div className="btn video-button btn-warning">
+                        <iframe
+                            width="100%"
+                            height="auto"
+                            src={`https://www.youtube.com/embed/${videoId}`}
+                            title="YouTube Video"
+                            frameBorder="0"
+                            allowFullScreen
+                        ></iframe>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
 
     return (
         <>
@@ -31,36 +76,15 @@ export default function Detail() {
                 <div className="container">
                     <h1 className="text-center text-primary">{currentRecipe?.title}</h1>
                     <div className="d-flex justify-content-center">
-                        <img src={`/images/${currentRecipe?.image}`} className="main-image" />
+                        <img src={`${currentRecipe?.recipe_picture}`} className="main-image" />
                     </div>
                     <div className="row mt-5">
                         <div className="col offset-md-2">
                             <h2>Ingredients</h2>
-                            <ul>
-                                <li>2 eggs </li>
-                                <li>2 tbsp mayonnaise</li>
-                                <li>3 slices bread</li>
-                                <li>a little butter</li>
-                                <li>⅓ carton of cress</li>
-                                <li>
-                                    2-3 slices of tomato or a lettuce leaf and a slice of ham or
-                                    cheese
-                                </li>
-                                <li>crisps, to serve</li>
-                            </ul>
+                            <RecipeIngredients />
                         </div>
                     </div>
-                    <div className="row mt-5">
-                        <div className="col offset-md-2">
-                            <h2>Video Step</h2>
-                            <div className="btn video-button btn-warning">Step 1</div>
-                        </div>
-                    </div>
-                    <div className="row mt-3">
-                        <div className="col offset-md-2">
-                            <div className="btn video-button btn-warning">Step 2</div>
-                        </div>
-                    </div>
+                    <VideoEmbed />
                     <div className="row mt-5">
                         <div className="row mt-5">
                             <div className="col offset-md-2">
