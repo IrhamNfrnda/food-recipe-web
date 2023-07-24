@@ -40,6 +40,15 @@ The backend repository for this project can be found on GitHub at the following 
 - Linting with ESLint for maintaining code quality
 - Data caching with Redis for improved performance
 
+## Screenshots 📸
+
+<table>
+   <tr>
+    <td><img width="350px" src="./screenshot/home.png" border="0" alt="Login" /></td>
+    <td> <img width="350px" src="./screenshot/login.png" border="0"  alt="Register" /></td>
+  </tr>
+</table>
+
 ## Getting Started 🚀
 
 To set up the Food Recipe project locally, follow these steps:
