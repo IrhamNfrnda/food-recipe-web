@@ -16,22 +16,22 @@ export default function Home() {
 
     React.useEffect(() => {
         axios
-          .get(`${process.env.REACT_APP_BASE_URL}/recipe?limit=9&page=1`)
-          .then((response) => {
-            const recipeData = response?.data?.data.slice(1); // Skip the first element which contains "full_count"
-            setRecipeList(recipeData);
-          });
-      }, []);
+            .get(`${process.env.REACT_APP_BASE_URL}/recipe?limit=6&page=1`)
+            .then((response) => {
+                const recipeData = response?.data?.data.slice(1); // Skip the first element which contains "full_count"
+                setRecipeList(recipeData);
+            });
+    }, []);
 
-      const handleSearch = () => {
+    const handleSearch = () => {
         axios
-          .get(`${process.env.REACT_APP_BASE_URL}/recipe`, {
-            params: {
-              keyword
-            },
-          })
-          .then((response) => setRecipeList(response?.data?.data.slice(1)));
-      }
+            .get(`${process.env.REACT_APP_BASE_URL}/recipe`, {
+                params: {
+                    keyword
+                },
+            })
+            .then((response) => setRecipeList(response?.data?.data.slice(1)));
+    }
 
     return (
         <>
@@ -55,11 +55,11 @@ export default function Home() {
                                 placeholder="search restaurant, food"
                                 onChange={(e) => setKeyword(e.target.value)}
                                 onKeyDown={(e) => {
-                                  if(e.keyCode === 13) {
-                                    window.location.href = ("#popular-recipe");
-              
-                                    handleSearch();
-                                  }
+                                    if (e.keyCode === 13) {
+                                        window.location.href = ("#popular-recipe");
+
+                                        handleSearch();
+                                    }
                                 }}
                             />
                         </div>
@@ -84,11 +84,10 @@ export default function Home() {
                             <img src="/images/popular-for-you.png" alt="Popular For You" />
                         </div>
                         <div className="col-md-5 align-self-center justify-content-between">
-                            <h4>Healthy Bone Broth Ramen (Quick &amp; Easy)</h4>
+                            <h4>Fruity Honey Sandwich</h4>
                             <hr style={{ width: "10vh" }} />
                             <p>
-                                Quick + Easy Chicken Bone Broth Ramen- Healthy chicken ramen in a
-                                hurry? That`s right!
+                                A delightful blend of fresh fruits and sweet honey nestled between two slices of bread, creating a delectable and healthy Fruity Honey Sandwich!
                             </p>
                             <button className="btn">Learn More</button>
                         </div>
@@ -109,11 +108,10 @@ export default function Home() {
                             <img src="/images/new-recipe.png" alt="New Recipe" />
                         </div>
                         <div className="col-md-5 justify-content-between">
-                            <h4>Healthy Bone Broth Ramen (Quick &amp; Easy)</h4>
+                            <h4>Crispy Chicken Burger</h4>
                             <hr style={{ width: "10vh" }} />
                             <p>
-                                Quick + Easy Chicken Bone Broth Ramen- Healthy chicken ramen in a
-                                hurry? That`s right!
+                                Indulge in the ultimate savory delight - a succulent, crispy chicken patty served with gourmet toppings, all tucked into a perfectly toasted burger bun, creating the mouthwatering Crispy Chicken Burger.
                             </p>
                             <button className="btn">Learn More</button>
                         </div>

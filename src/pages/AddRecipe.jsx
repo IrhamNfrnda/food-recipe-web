@@ -22,6 +22,12 @@ export default function AddRecipe() {
     const [videoLink, setVideoLink] = React.useState("");
     const [recipePicture, setRecipePicture] = React.useState("");
 
+    React.useEffect(() => {
+        if (!localStorage.getItem("auth")) {
+            navigate("/login");
+        }
+    }, []);
+
     // Function to handle submit
     const handleSubmit = (e) => {
         e.preventDefault();
