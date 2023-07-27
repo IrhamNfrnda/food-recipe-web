@@ -84,12 +84,14 @@ export default function Home() {
                             <img src="/images/popular-for-you.png" alt="Popular For You" />
                         </div>
                         <div className="col-md-5 align-self-center justify-content-between">
-                            <h4>Fruity Honey Sandwich</h4>
+                            <h4>Fruity Honey Toast</h4>
                             <hr style={{ width: "10vh" }} />
                             <p>
                                 A delightful blend of fresh fruits and sweet honey nestled between two slices of bread, creating a delectable and healthy Fruity Honey Sandwich!
                             </p>
-                            <button className="btn">Learn More</button>
+                            <Link className="text-decoration-none" to={`/detail/fruity-honey-toast`}>
+                                <button className="btn">Learn More</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -113,7 +115,9 @@ export default function Home() {
                             <p>
                                 Indulge in the ultimate savory delight - a succulent, crispy chicken patty served with gourmet toppings, all tucked into a perfectly toasted burger bun, creating the mouthwatering Crispy Chicken Burger.
                             </p>
-                            <button className="btn">Learn More</button>
+                            <Link className="text-decoration-none" to={`/detail/crispy-chicken-burger`}>
+                                <button className="btn">Learn More</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -124,7 +128,7 @@ export default function Home() {
                 <div className="container">
                     <h3 className="popular-recipe-title">Popular Recipe</h3>
                     <div className="row">
-                        {recipeList.map((item) => (
+                        {recipeList.slice(0,9).map((item) => (
                             <RecipeCard
                                 title={item?.title}
                                 image={item?.recipe_picture}
