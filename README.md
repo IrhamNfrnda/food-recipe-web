@@ -14,14 +14,9 @@ The Food Recipe project is built using the following technologies:
 - Bootstrap
 - JQuery
 - Node.Js
-- Express.Js
-- JWT (JSON Web Tokens)
-- XSS (Cross-Site Scripting) Protection
-- CORS (Cross-Origin Resource Sharing)
-- ESLint (Linting tool for code quality)
-- Redis (In-memory data store)
-- Cloudinary (Cloud-based image and video management)
-- PostgreSql (Relational Database)
+- React
+- Redux
+- Sweet Alert
 
 ## Project Repository 📂
 
