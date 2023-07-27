@@ -25,8 +25,11 @@ The Food Recipe project is built using the following technologies:
 
 ## Project Repository 📂
 
-The backend repository for this project can be found on GitHub at the following link:
+The Back End repository for this project can be found on GitHub at the following link:
 [Food Recipe Backend Repository](https://github.com/IrhamNfrnda/food-recipe-be)
+
+The Mobile App repository for this project can be found on GitHub at the following link:
+[Food Recipe Mobile App Repository](https://github.com/IrhamNfrnda/Food-Recipe-App)
 
 ## Features ✨
 
