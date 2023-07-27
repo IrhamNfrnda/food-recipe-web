@@ -14,19 +14,17 @@ The Food Recipe project is built using the following technologies:
 - Bootstrap
 - JQuery
 - Node.Js
-- Express.Js
-- JWT (JSON Web Tokens)
-- XSS (Cross-Site Scripting) Protection
-- CORS (Cross-Origin Resource Sharing)
-- ESLint (Linting tool for code quality)
-- Redis (In-memory data store)
-- Cloudinary (Cloud-based image and video management)
-- PostgreSql (Relational Database)
+- React
+- Redux
+- Sweet Alert
 
 ## Project Repository 📂
 
-The backend repository for this project can be found on GitHub at the following link:
+The Back End repository for this project can be found on GitHub at the following link:
 [Food Recipe Backend Repository](https://github.com/IrhamNfrnda/food-recipe-be)
+
+The Mobile App repository for this project can be found on GitHub at the following link:
+[Food Recipe Mobile App Repository](https://github.com/IrhamNfrnda/Food-Recipe-App)
 
 ## Features ✨
 
@@ -39,6 +37,15 @@ The backend repository for this project can be found on GitHub at the following 
 - Cross-Origin Resource Sharing for secure API access
 - Linting with ESLint for maintaining code quality
 - Data caching with Redis for improved performance
+
+## Screenshots 📸
+
+<table>
+   <tr>
+    <td><img width="350px" src="./screenshot/home.png" border="0" alt="Login" /></td>
+    <td> <img width="350px" src="./screenshot/login.png" border="0"  alt="Register" /></td>
+  </tr>
+</table>
 
 ## Getting Started 🚀
 
