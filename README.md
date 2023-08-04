@@ -26,6 +26,9 @@ The Back End repository for this project can be found on GitHub at the following
 The Mobile App repository for this project can be found on GitHub at the following link:
 [Food Recipe Mobile App Repository](https://github.com/IrhamNfrnda/Food-Recipe-App)
 
+The Android Application for this project can be found on GitHub at the following link:
+[Food Recipe Application](https://github.com/IrhamNfrnda/Food-Recipe-App/releases/download/V1.0.0/app-debug.apk)
+
 ## Features ✨
 
 - User registration and authentication with JWT
