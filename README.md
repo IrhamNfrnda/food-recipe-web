@@ -27,7 +27,7 @@ The Mobile App repository for this project can be found on GitHub at the followi
 [Food Recipe Mobile App Repository](https://github.com/IrhamNfrnda/Food-Recipe-App)
 
 The Android Application for this project can be found on GitHub at the following link:
-[Food Recipe Application](https://github.com/IrhamNfrnda/Food-Recipe-App/releases/download/V1.0.0/app-debug.apk)
+[Food Recipe Application](https://github.com/IrhamNfrnda/Food-Recipe-App/releases)
 
 ## Features ✨
 
