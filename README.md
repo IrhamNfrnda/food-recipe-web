@@ -26,6 +26,9 @@ The Back End repository for this project can be found on GitHub at the following
 The Mobile App repository for this project can be found on GitHub at the following link:
 [Food Recipe Mobile App Repository](https://github.com/IrhamNfrnda/Food-Recipe-App)
 
+The Android Application for this project can be found on GitHub at the following link:
+[Food Recipe Application](https://github.com/IrhamNfrnda/Food-Recipe-App/releases)
+
 ## Features ✨
 
 - User registration and authentication with JWT
@@ -42,8 +45,28 @@ The Mobile App repository for this project can be found on GitHub at the followi
 
 <table>
    <tr>
-    <td><img width="350px" src="./screenshot/home.png" border="0" alt="Login" /></td>
-    <td> <img width="350px" src="./screenshot/login.png" border="0"  alt="Register" /></td>
+      <td>Home Page</td>
+      <td>Detail Recipe Page</td>
+   </tr>
+   <tr>
+    <td><img width="350px" src="./screenshot/Home.jpeg" border="0" alt="Home Page" /></td>
+    <td> <img width="350px" src="./screenshot/Detail.jpeg" border="0"  alt="Detail Recipe Page" /></td>
+  </tr>
+    <tr>
+      <td>Login Page</td>
+      <td>Register Page</td>
+   </tr>
+   <tr>
+    <td><img width="350px" src="./screenshot/Login.jpeg" border="0" alt="Login" /></td>
+    <td> <img width="350px" src="./screenshot/Register.jpeg" border="0"  alt="Register" /></td>
+  </tr>
+    <tr>
+      <td>Profile Page</td>
+      <td>Add Recipe Page</td>
+   </tr>
+   <tr>
+    <td><img width="350px" src="./screenshot/Profile.jpeg" border="0" alt="Profile Page" /></td>
+    <td> <img width="350px" src="./screenshot/Add.jpeg" border="0"  alt="Add Recipe Page" /></td>
   </tr>
 </table>
 
