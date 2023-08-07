@@ -33,7 +33,7 @@ export default function Profile() {
         // Check if profile data is empty and use axios instead
         if (!profileData.fullname && !profileData.profile_picture) {
             console.log(profileData.fullname, profileData.profile_picture);
-            axios.get(`${process.env.REACT_APP_BASE_URL}/profile`).then((result) => {
+            axios.get(`${process.env.REACT_APP_BASE_URL}profile`).then((result) => {
                 setProfile(result.data?.data[0]);
             });
         } else {
@@ -41,7 +41,7 @@ export default function Profile() {
         }
 
         axios
-            .get(`${process.env.REACT_APP_BASE_URL}/recipe/user/${localStorage.getItem("userId")}`)
+            .get(`${process.env.REACT_APP_BASE_URL}recipe/user/${localStorage.getItem("userId")}`)
             .then((result) => {
                 setRecipeList(result?.data?.data);
             });
@@ -60,8 +60,8 @@ export default function Profile() {
                         src={profile?.profile_picture}
                         className="rounded-circle"
                         alt="Cinque Terre"
-                        width={100}
-                        height={100}
+                        width={150}
+                        height={150}
                     />
                 </div>
                 <div className="mt-3 d-flex justify-content-center">
@@ -80,7 +80,7 @@ export default function Profile() {
                                         <Link className="text-primary fw-bold" to="#">
                                             My Recipes
                                         </Link>
-                                        <Link
+                                        {/* <Link
                                             className="text-primary fw-bold text-decoration-none mx-4"
                                             to="#"
                                         >
@@ -91,7 +91,7 @@ export default function Profile() {
                                             to="#"
                                         >
                                             Liked Recipes
-                                        </Link>
+                                        </Link> */}
                                     </div>
                                 </div>
                             </div>

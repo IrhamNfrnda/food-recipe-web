@@ -6,11 +6,12 @@
 .image-container {
     overflow: hidden;
     height: 100vh;
-    position: relative;
+    position: fixed;
+    width: 50%;
 }
 
 .overlay-box {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 50%;
@@ -20,7 +21,7 @@
 }
 
 .logo-container {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 25%;
     transform: translate(-50%, -50%);

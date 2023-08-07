@@ -9,7 +9,7 @@ export default function Navbar() {
                 <div className="row nav">
                     <div className="col">
                         <div>
-                            <Link className="nav-item active" to="/">
+                            <Link className="nav-item" to="/">
                                 Home
                             </Link>
                             <Link className="nav-item" to="/add-recipe">

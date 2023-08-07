@@ -25,6 +25,7 @@
     background-color: #efc81a;
     height: 100vh;
     width: 25%;
+    max-width:100%;
     position: absolute;
     right: 0;
     top: 0;
@@ -37,16 +38,17 @@
     top: 20vh;
     width: 30%;
     height: auto;
+    max-width:100%;
 }
 
 .hero-text {
     font-family: 'airbnbcereal';
     font-style: normal;
     font-weight: 500;
-    font-size: 60px;
     line-height: 90px;
     align-items: center;
     color: #2E266F;
+    max-width:100vh;
 }
 
 /* Main Section Style */
@@ -72,6 +74,7 @@
     bottom: 90%;
     height: auto;
     width: 80%;
+    max-width:100%;
 }
 
 .main-section-recipe h4 {
@@ -105,7 +108,7 @@
 /* Popular Recipes Style */
 .popular-recipe-image {
     width: 100%;
-    height: 30vh;
+    height: 35vh;
     background-color: gray;
     border-radius: 10px;
     cursor: pointer;
@@ -114,6 +117,7 @@
     display: flex;
     align-items: end;
     padding: 20px;
+    max-width:100%;
 }
 
 .popular-recipe-title{
@@ -157,6 +161,7 @@ footer {
         height: 90vh;
         width: 100vh;
         z-index: -2;
+        max-width:100%;
     }
 
     .bg-yellow {
@@ -221,10 +226,12 @@ footer {
         object-fit: cover;
         border-radius: 10px;
         margin-bottom: 50px;
+        max-width:100%;
     }
 
     #popular-recipe-image {
         width: 100%;
+        max-width:100%;
     }
 
 }

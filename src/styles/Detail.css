@@ -53,6 +53,12 @@
     background-color: gray;
     border-radius: 10px;
   }
+
+  .video-button {
+    width: 50%;
+    height: 100%;
+  }
+
   
   @media only screen and (max-width: 575px) {
     nav {
@@ -62,10 +68,6 @@
   
     #content {
       margin-top: 50px;
-    }
-  
-    .video-button {
-      width: 100%;
     }
   
     .main-image {

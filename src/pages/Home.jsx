@@ -1,7 +1,6 @@
 import React from 'react'
-
+import { Link, useNavigate } from "react-router-dom"
 import "../styles/Home.css";
-
 // import component
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
@@ -11,12 +10,13 @@ import axios from "axios";
 // import recipeList from "../menu.json";
 
 export default function Home() {
+    const navigate = useNavigate();
     const [recipeList, setRecipeList] = React.useState([]);
     const [keyword, setKeyword] = React.useState("");
 
     React.useEffect(() => {
         axios
-            .get(`${process.env.REACT_APP_BASE_URL}/recipe?limit=6&page=1`)
+            .get(`${process.env.REACT_APP_BASE_URL}recipe?limit=6&page=1`)
             .then((response) => {
                 const recipeData = response?.data?.data.slice(1); // Skip the first element which contains "full_count"
                 setRecipeList(recipeData);
@@ -24,13 +24,7 @@ export default function Home() {
     }, []);
 
     const handleSearch = () => {
-        axios
-            .get(`${process.env.REACT_APP_BASE_URL}/recipe`, {
-                params: {
-                    keyword
-                },
-            })
-            .then((response) => setRecipeList(response?.data?.data.slice(1)));
+        navigate(`/search?keyword=${keyword}`);
     }
 
     return (
@@ -38,16 +32,16 @@ export default function Home() {
             {/* start of header */}
             <Navbar />
             <div className="bg-yellow" style={{ zIndex: -1 }} />
-            <div className="container hero">
+            <div className="container hero display-4">
                 <div
                     className="row align-item-center flex-column-reverse gap-5 flex-lg-row py-5"
                     style={{ height: "90vh" }}
                 >
                     <div className="hero-col col-md-7 col-xs-12 order-2 order-md-1 hero-left mb-5">
-                        <h1 className="hero-text">
+                        <p className="hero-text">
                             Discover Recipe <br />
                             &amp; Delicious Food
-                        </h1>
+                        </p>
                         <div className="search-input mt-2 w-50">
                             <input
                                 className="form-control form-control-lg"

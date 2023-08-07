@@ -2,12 +2,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 
 // halaman yang di import
+import React from "react";
 import Home from "./pages/Home";
 import Detail from "./pages/Detail";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AddRecipe from "./pages/AddRecipe";
 import Profile from "./pages/Profile";
+import Search from "./pages/Search";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import axios from "axios";
@@ -39,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: "/profile",
     element: <Profile />,
+  },
+  {
+    path: "/search",
+    element: <Search />,
   }
 ]);
 
@@ -57,9 +63,11 @@ function App() {
 
   return (
     <div className="App">
-      <Provider store={store}>
-        <RouterProvider router={router} />
-      </Provider>
+      <React.StrictMode>
+        <Provider store={store}>
+          <RouterProvider router={router} />
+        </Provider>
+      </React.StrictMode>
     </div>
   );
 }
