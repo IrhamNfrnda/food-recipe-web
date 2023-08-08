@@ -38,8 +38,9 @@
   background-size: cover;
   background-position: center;
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   padding: 20px;
+  height: 200px;
 }
 
 footer {
@@ -74,5 +75,11 @@ footer {
   .hide-desktop {
     display: block;
     visibility: visible;
+  }
+}
+
+@media (min-width: 768px) {
+  .popular-recipe-image {
+    height: 250px; 
   }
 }

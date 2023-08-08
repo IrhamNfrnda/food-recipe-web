@@ -99,9 +99,15 @@ export default function Profile() {
                             <section id="popular-recipe">
                                 <div className="container">
                                     <div className="row">
-                                        {recipeList?.map((item) => (
-                                            <RecipeCard title={item?.title} image={item?.recipe_picture}/>
-                                        ))}
+                                        {recipeList.length > 0 ? (
+                                            recipeList.map((item) => (
+                                                <RecipeCard title={item?.title} image={item?.recipe_picture} key={item?.id} />
+                                            ))
+                                        ) : (
+                                            <div className="col-12 text-center">
+                                                <p>No recipes to display.</p>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </section>
