@@ -99,8 +99,8 @@ export default function Profile() {
                             <section id="popular-recipe">
                                 <div className="container">
                                     <div className="row">
-                                        {recipeList.length > 0 ? (
-                                            recipeList.map((item) => (
+                                        {recipeList?.length > 0 ? (
+                                            recipeList?.map((item) => (
                                                 <RecipeCard title={item?.title} image={item?.recipe_picture} key={item?.id} />
                                             ))
                                         ) : (
