@@ -82,7 +82,7 @@ export default function Login() {
         <>
             {/* start of content */}
             <div className="container-fluid">
-                <div className="row">
+                <div className="row height-100">
                     <div className="col-md-6 px-0 left-side">
                         <div className="logo-container">
                             <img
