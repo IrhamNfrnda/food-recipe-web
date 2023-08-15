@@ -12,6 +12,11 @@
   background-color: #f0f0f0;
 }
 
+.form-control {
+  font-family: "airbnbcereal";
+  font-style: normal;
+}
+
 .form-control::placeholder {
   font-family: "airbnbcereal";
   font-style: normal;

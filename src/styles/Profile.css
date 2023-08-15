@@ -43,6 +43,10 @@
   height: 200px;
 }
 
+.menu-recipes {
+  width: 100%;
+}
+
 footer {
   margin-top: 300px;
   height: 350px;

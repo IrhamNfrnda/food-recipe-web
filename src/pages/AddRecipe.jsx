@@ -21,6 +21,16 @@ export default function AddRecipe() {
     const [ingredients, setIngredients] = React.useState("");
     const [videoLink, setVideoLink] = React.useState("");
     const [recipePicture, setRecipePicture] = React.useState("");
+    const [category, setCategory] = React.useState("");
+
+    const categories = [
+        "Main Dish",
+        "Snack",
+        "Dessert",
+        "Salad",
+        "Beverage",
+        "Breakfast",
+    ];
 
     React.useEffect(() => {
         if (!localStorage.getItem("auth")) {
@@ -35,6 +45,7 @@ export default function AddRecipe() {
         const formData = new FormData();
         formData.append("recipePicture", recipePicture);
         formData.append("title", title);
+        formData.append("category", category);
         formData.append("ingredients", ingredients);
         formData.append("videoLink", videoLink);
         formData.append("userId", userId);
@@ -75,9 +86,9 @@ export default function AddRecipe() {
 
         handleInputChange(e);
     };
-  
+
     const handleInputChange = (e) => {
-      setRecipePicture(e.target.files[0]);
+        setRecipePicture(e.target.files[0]);
     };
 
     return (
@@ -120,6 +131,22 @@ export default function AddRecipe() {
                         />
                     </div>
                     <div className="mb-3">
+
+                        <select
+                            id="category"
+                            className="form-control"
+                            onChange={(e) => setCategory(e.target.value)}
+                        >
+                            <option value="Main Dish">Select a category</option>
+                            {categories.map((cat) => (
+                                <option key={cat} value={cat}>
+                                    {cat}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+
+                    <div className="mb-3">
                         <textarea
                             className="form-control"
                             style={{ height: 200 }}
@@ -139,10 +166,10 @@ export default function AddRecipe() {
                         />
                     </div>
                     <div className="mt-3 d-flex justify-content-center">
-                        <button 
-                            className="btn btn-warning" 
-                            style={{ width: "30%" }} 
-                            onClick={handleSubmit}    
+                        <button
+                            className="btn btn-warning"
+                            style={{ width: "30%" }}
+                            onClick={handleSubmit}
                         >
                             Post
                         </button>

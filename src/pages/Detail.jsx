@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useLocation } from "react-router";
 import axios from 'axios';
 import Swal from "sweetalert2";
+import { FaHeart, FaRegHeart, FaSave, FaRegSave } from 'react-icons/fa';
 
 // import components
 import Footer from '../components/Footer'
@@ -16,6 +17,8 @@ export default function Detail() {
     const [currentRecipe, setCurrentRecipe] = useState(null);
     const [comments, setComments] = useState(null);
     const [comment, setComment] = useState('');
+    const [liked, setLiked] = useState(false);
+    const [saved, setSaved] = useState(false);
 
     useEffect(() => {
         const currentSlug = location?.pathname?.split("/")[2];
@@ -117,6 +120,15 @@ export default function Detail() {
             });
     }
 
+    const handleLikeButton = () => {
+        // Toggle the liked state and update backend if needed
+        setLiked(!liked);
+    };
+
+    const handleSaveButton = () => {
+        // Toggle the saved state and update backend if needed
+        setSaved(!saved);
+    };
 
     return (
         <>
@@ -159,8 +171,28 @@ export default function Detail() {
                     <section id="content">
                         <div className="container">
                             <h1 className="text-center text-primary">{currentRecipe?.title}</h1>
-                            <div className="d-flex justify-content-center">
+                            <div className="d-flex justify-content-center" style={{ position: 'relative' }}>
                                 <img src={`${currentRecipe?.recipe_picture}`} className="main-image" />
+                                <div className="buttons-container">
+                                    <button
+                                        className={`btn btn-like ${liked ? 'liked' : ''}`}
+                                        style={{ 
+                                            backgroundColor: liked ? '#efc81a' : 'white'
+                                         }}
+                                        onClick={handleLikeButton}
+                                    >
+                                        {liked ? <FaRegHeart style={{ color: 'white', fontSize: '35px' }} /> : <FaRegHeart style={{ color: '#efc81a',fontSize: '35px' }} />}
+                                    </button>
+                                    <button
+                                        className={`btn btn-save ${saved ? 'saved' : ''}`}
+                                        style={{ 
+                                            backgroundColor: saved ? '#efc81a' : 'white'
+                                         }}
+                                        onClick={handleSaveButton}
+                                    >
+                                         {saved ? <FaRegSave style={{ color: 'white', fontSize: '35px' }} /> : <FaRegSave style={{ color: '#efc81a',fontSize: '35px' }} />}
+                                    </button>
+                                </div>
                             </div>
                             <div className="row mt-5">
                                 <div className="col offset-md-2">

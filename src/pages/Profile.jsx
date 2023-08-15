@@ -95,8 +95,7 @@ export default function Profile() {
                                     </div>
                                 </div>
                             </div>
-                            {/* <!-- start of popular recipe --> */}
-                            <section id="popular-recipe">
+    
                                 <div className="container">
                                     <div className="row">
                                         {recipeList?.length > 0 ? (
@@ -110,8 +109,7 @@ export default function Profile() {
                                         )}
                                     </div>
                                 </div>
-                            </section>
-                            {/* <!-- end of popular recipe --> */}
+
                         </div>
                     </div>
                 </section>
