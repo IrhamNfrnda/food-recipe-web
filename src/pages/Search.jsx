@@ -6,7 +6,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
 export default function Search() {
-  const [keyword, setKeyword] = useState("");
+  const [keyword, setKeyword] = useState(null);
   const [recipeList, setRecipeList] = useState([]);
   const location = useLocation();
 
@@ -19,11 +19,10 @@ export default function Search() {
     setKeyword(urlKeyword);
 
     // Perform search if keyword is available in the URL
-    if (urlKeyword) {
+    if (keyword) {
       handleSearch();
-      console.log(urlKeyword);
     }
-  }, [location.search]);
+  }, [keyword]);
 
   const handleSearch = () => {
     axios
