@@ -181,7 +181,7 @@ export default function Detail() {
                                          }}
                                         onClick={handleLikeButton}
                                     >
-                                        {liked ? <FaRegHeart style={{ color: 'white', fontSize: '35px' }} /> : <FaRegHeart style={{ color: '#efc81a',fontSize: '35px' }} />}
+                                        {liked ? <FaRegHeart style={{ color: 'white', fontSize: '30px' }} /> : <FaRegHeart style={{ color: '#efc81a',fontSize: '30px' }} />}
                                     </button>
                                     <button
                                         className={`btn btn-save ${saved ? 'saved' : ''}`}
@@ -190,7 +190,7 @@ export default function Detail() {
                                          }}
                                         onClick={handleSaveButton}
                                     >
-                                         {saved ? <FaRegSave style={{ color: 'white', fontSize: '35px' }} /> : <FaRegSave style={{ color: '#efc81a',fontSize: '35px' }} />}
+                                         {saved ? <FaRegSave style={{ color: 'white', fontSize: '30px' }} /> : <FaRegSave style={{ color: '#efc81a',fontSize: '30px' }} />}
                                     </button>
                                 </div>
                             </div>
