@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 // import styles
@@ -14,17 +14,20 @@ import axios from "axios";
 
 export default function Profile() {
     const navigate = useNavigate();
-    const [profile, setProfile] = React.useState(null)
-    const [recipeList, setRecipeList] = React.useState([]);
+    const [profile, setProfile] = useState(null)
+    const [myRecipeList, setMyRecipeList] = useState([]);
+    const [savedRecipeList, setSavedRecipeList] = useState([]);
+    const [likedRecipeList, setLikedRecipeList] = useState([]);
+    const [activeTab, setActiveTab] = useState("myRecipes");
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (!localStorage.getItem("auth")) {
             navigate("/login");
         }
     }, []);
 
     // Set user profile data from local storage
-    React.useEffect(() => {
+    useEffect(() => {
         const profileData = {
             fullname: localStorage.getItem("userFullName"),
             profile_picture: localStorage.getItem("userProfilePicture"),
@@ -43,11 +46,76 @@ export default function Profile() {
         axios
             .get(`${process.env.REACT_APP_BASE_URL}recipe/user/${localStorage.getItem("userId")}`)
             .then((result) => {
-                setRecipeList(result?.data?.data);
+                setMyRecipeList(result?.data?.data);
+            });
+        axios
+            .get(`${process.env.REACT_APP_BASE_URL}recipe/saved`)
+            .then((result) => {
+                setSavedRecipeList(result?.data?.data);
+            });
+        axios
+            .get(`${process.env.REACT_APP_BASE_URL}recipe/liked`)
+            .then((result) => {
+                setLikedRecipeList(result?.data?.data);
             });
 
     }, [localStorage.getItem("userFullName"), localStorage.getItem("userProfilePicture")]);
 
+    const handleTabChange = (tab) => {
+        setActiveTab(tab);
+    };
+
+    const renderRecipeList = () => {
+        if (activeTab === "myRecipes") {
+            return (
+                <div className="container">
+                    <div className="row">
+                        {myRecipeList?.length > 0 ? (
+                            myRecipeList?.map((item) => (
+                                <RecipeCard title={item?.title} image={item?.recipe_picture} key={item?.id} />
+                            ))
+                        ) : (
+                            <div className="col-12 text-center">
+                                <p>No recipes to display.</p>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
+        } else if (activeTab === "savedRecipes") {
+            return (
+                <div className="container">
+                    <div className="row">
+                        {savedRecipeList?.length > 0 ? (
+                            savedRecipeList?.map((item) => (
+                                <RecipeCard title={item?.title} image={item?.recipe_picture} key={item?.id} />
+                            ))
+                        ) : (
+                            <div className="col-12 text-center">
+                                <p>No recipes to display.</p>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
+        } else if (activeTab === "likedRecipes") {
+            return (
+                <div className="container">
+                    <div className="row">
+                        {likedRecipeList?.length > 0 ? (
+                            likedRecipeList?.map((item) => (
+                                <RecipeCard title={item?.title} image={item?.recipe_picture} key={item?.id} />
+                            ))
+                        ) : (
+                            <div className="col-12 text-center">
+                                <p>No recipes to display.</p>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
+        }
+    };
 
 
     return (
@@ -77,39 +145,30 @@ export default function Profile() {
                             <div className="row animate__animated animate__fadeInDown mb-4">
                                 <div className="col-12">
                                     <div>
-                                        <Link className="text-primary fw-bold" to="#">
+                                        <Link
+                                            className={`text-primary fw-bold ${activeTab === "myRecipes" ? "" : "text-decoration-none"}`}
+                                            onClick={() => handleTabChange("myRecipes")}
+                                        >
                                             My Recipes
                                         </Link>
-                                        {/* <Link
-                                            className="text-primary fw-bold text-decoration-none mx-4"
-                                            to="#"
+                                        <Link
+                                            className={`text-primary fw-bold mx-4 ${activeTab === "savedRecipes" ? "" : "text-decoration-none"}`}
+                                            onClick={() => handleTabChange("savedRecipes")}
                                         >
                                             Saved Recipes
                                         </Link>
                                         <Link
-                                            className="text-primary fw-bold text-decoration-none"
-                                            to="#"
+                                            className={`text-primary fw-bold ${activeTab === "likedRecipes" ? "" : "text-decoration-none"}`}
+                                            onClick={() => handleTabChange("likedRecipes")}
                                         >
                                             Liked Recipes
-                                        </Link> */}
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
-    
-                                <div className="container">
-                                    <div className="row">
-                                        {recipeList?.length > 0 ? (
-                                            recipeList?.map((item) => (
-                                                <RecipeCard title={item?.title} image={item?.recipe_picture} key={item?.id} />
-                                            ))
-                                        ) : (
-                                            <div className="col-12 text-center">
-                                                <p>No recipes to display.</p>
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
-
+                            {/* Recipe List */}
+                            {renderRecipeList()}
+                            {/* End Of Recipt List */}
                         </div>
                     </div>
                 </section>

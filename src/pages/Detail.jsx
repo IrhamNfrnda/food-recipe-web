@@ -30,6 +30,8 @@ export default function Detail() {
             .then((result) => {
                 setCurrentRecipe(result.data?.data);
                 setComments(result.data?.data?.comments)
+                setLiked(result.data?.data?.isLiked)
+                setSaved(result.data?.data?.isSaved)
                 setIsLoading(false);
             })
             .catch((error) => {
@@ -121,13 +123,97 @@ export default function Detail() {
     }
 
     const handleLikeButton = () => {
-        // Toggle the liked state and update backend if needed
-        setLiked(!liked);
+        const userId = localStorage.getItem('userId');
+        const recipeId = currentRecipe?.id;
+
+        if (!userId) {
+            return Swal.fire({
+                title: "Failed",
+                text: "Please login first to like",
+                icon: "error",
+            })
+        }
+
+        if (!liked) {
+            console.log('liked')
+            axios.post(`${process.env.REACT_APP_BASE_URL}recipe/like`, {
+                userId: userId,
+                recipeId: recipeId,
+            })
+                .then((response) => {
+                    setLiked(!liked);
+                })
+                .catch((error) => {
+                    Swal.fire({
+                        title: "Failed",
+                        text: "Error Like Recipe",
+                        icon: "error",
+                    })
+                });
+        } else {
+            console.log('unliked')
+            axios.post(`${process.env.REACT_APP_BASE_URL}recipe/unlike`, {
+                userId: userId,
+                recipeId: recipeId,
+            })
+                .then((response) => {
+                    setLiked(!liked);
+                })
+                .catch((error) => {
+                    Swal.fire({
+                        title: "Failed",
+                        text: "Error Unlike Recipe",
+                        icon: "error",
+                    })
+                });
+        }
     };
 
     const handleSaveButton = () => {
-        // Toggle the saved state and update backend if needed
-        setSaved(!saved);
+        const userId = localStorage.getItem('userId');
+        const recipeId = currentRecipe?.id;
+
+        if (!userId) {
+            return Swal.fire({
+                title: "Failed",
+                text: "Please login first to like",
+                icon: "error",
+            })
+        }
+
+        if (!saved) {
+            console.log('Saved')
+            axios.post(`${process.env.REACT_APP_BASE_URL}recipe/save`, {
+                userId: userId,
+                recipeId: recipeId,
+            })
+                .then((response) => {
+                    setSaved(!saved);
+                })
+                .catch((error) => {
+                    Swal.fire({
+                        title: "Failed",
+                        text: "Error Like Recipe",
+                        icon: "error",
+                    })
+                });
+        } else {
+            console.log('Unsaved')
+            axios.post(`${process.env.REACT_APP_BASE_URL}recipe/unsave`, {
+                userId: userId,
+                recipeId: recipeId,
+            })
+                .then((response) => {
+                    setSaved(!saved);
+                })
+                .catch((error) => {
+                    Swal.fire({
+                        title: "Failed",
+                        text: "Error Unlike Recipe",
+                        icon: "error",
+                    })
+                });
+        }
     };
 
     return (
@@ -176,21 +262,21 @@ export default function Detail() {
                                 <div className="buttons-container">
                                     <button
                                         className={`btn btn-like ${liked ? 'liked' : ''}`}
-                                        style={{ 
+                                        style={{
                                             backgroundColor: liked ? '#efc81a' : 'white'
-                                         }}
+                                        }}
                                         onClick={handleLikeButton}
                                     >
-                                        {liked ? <FaRegHeart style={{ color: 'white', fontSize: '30px' }} /> : <FaRegHeart style={{ color: '#efc81a',fontSize: '30px' }} />}
+                                        {liked ? <FaRegHeart style={{ color: 'white', fontSize: '30px' }} /> : <FaRegHeart style={{ color: '#efc81a', fontSize: '30px' }} />}
                                     </button>
                                     <button
                                         className={`btn btn-save ${saved ? 'saved' : ''}`}
-                                        style={{ 
+                                        style={{
                                             backgroundColor: saved ? '#efc81a' : 'white'
-                                         }}
+                                        }}
                                         onClick={handleSaveButton}
                                     >
-                                         {saved ? <FaRegSave style={{ color: 'white', fontSize: '30px' }} /> : <FaRegSave style={{ color: '#efc81a',fontSize: '30px' }} />}
+                                        {saved ? <FaRegSave style={{ color: 'white', fontSize: '30px' }} /> : <FaRegSave style={{ color: '#efc81a', fontSize: '30px' }} />}
                                     </button>
                                 </div>
                             </div>
